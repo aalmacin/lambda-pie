@@ -1,0 +1,6 @@
+#lang pie
+
+(claim + (-> Nat Nat Nat))
+(define + (lambda (a b) (iter-Nat a b (lambda (x) (add1 x)))))
+
+(+ 3 4)
