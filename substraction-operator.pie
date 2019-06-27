@@ -1,0 +1,13 @@
+#lang pie
+
+(claim sub1 (-> Nat Nat))
+(define sub1 (lambda (n) (which-Nat n zero (lambda (n) n))))
+
+(claim - (-> Nat Nat Nat))
+(define - (lambda (a b) (iter-Nat b a (lambda (x) (sub1 x)))))
+
+'Substract-one
+(sub1 7)
+
+'Substract
+(- 7 4)

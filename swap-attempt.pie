@@ -1,0 +1,7 @@
+#lang pie
+
+(claim swap (Pi ((A U) (B U)) (-> (Pair A B) (Pair B A))))
+
+(define swap (lambda (A B) (lambda (p) (cons (cdr p) (car p)))))
+
+(swap Atom Nat (cons 'hello 3))

@@ -1,0 +1,11 @@
+#lang pie
+
+(claim + (-> Nat Nat Nat))
+(define + (lambda (x y) (iter-Nat x y (lambda (c) (add1 c)))))
+
+(+ 9 6)
+
+(claim gauss (-> Nat Nat))
+(define gauss (lambda (x) (rec-Nat x 0 (lambda (c a) (+ (add1 c) a)))))
+
+(gauss 5)

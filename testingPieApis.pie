@@ -1,0 +1,18 @@
+#lang pie
+'spinach
+
+(claim dog1 (-> Nat Nat))
+(define dog1 (lambda (n) (add1 n)))
+
+(dog1 5)
+
+(claim whatIsWhichNat (-> Nat Nat))
+(define whatIsWhichNat (lambda (n) (which-Nat n zero (lambda (x)  x))))
+
+(whatIsWhichNat 20)
+
+(claim whatIsIterNat (-> Nat Nat))
+(define whatIsIterNat (lambda (n) (iter-Nat n zero (lambda (x) x))))
+
+(whatIsIterNat 20)
+

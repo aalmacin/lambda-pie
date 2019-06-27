@@ -1,0 +1,7 @@
+#lang pie
+
+(claim identity (Pi ((A U)) (-> A A)))
+
+(define identity (lambda (X) (lambda (y) y)))
+
+(identity Nat (add1 8))
