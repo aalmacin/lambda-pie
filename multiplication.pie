@@ -1,0 +1,23 @@
+#lang pie
+
+(claim + (-> Nat Nat Nat))
+(define + (lambda (a b) (
+                         iter-Nat a b (lambda (x) (add1 x))
+                         )))
+
+(claim * (-> Nat Nat Nat))
+(define * (lambda (a b) (
+                         rec-Nat a 0 (lambda (curr acc) (+ acc b))
+                         )))
+
+(+ 1 5)
+(+ 10 0)
+(+ 10 10)
+(+ 5 3)
+
+(* 0 4)
+(* 4 0)
+
+(* 3 4)
+(* 2 10)
+(* 7 6)
