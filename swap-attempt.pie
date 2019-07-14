@@ -1,7 +1,6 @@
 #lang pie
 
-(claim swap (Pi ((A U) (B U)) (-> (Pair A B) (Pair B A))))
+(claim simple-swap (Pi ((A U) (B U)) (-> (Pair A B) (Pair B A))))
+(define simple-swap (lambda (A B) (lambda (p) (cons (cdr p) (car p)))))
 
-(define swap (lambda (A B) (lambda (p) (cons (cdr p) (car p)))))
-
-(swap Atom Nat (cons 'hello 3))
+(simple-swap Nat Atom (cons 30 'hello))

@@ -1,0 +1,10 @@
+#lang pie
+
+(claim Pear U)
+(define Pear (Pair Nat Nat))
+
+(claim elim-Twin-Nat (-> (-> Nat Nat Nat) (Pair Nat Nat) Nat))
+(define elim-Twin-Nat (lambda (f p) (f (car p) (cdr p))))
+
+
+(elim-Twin-Nat (lambda (a b) b) (cons 1 5))

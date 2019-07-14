@@ -1,0 +1,41 @@
+#lang pie
+
+(claim nat-Pear (-> Nat Nat (Pair Nat Nat)))
+(define nat-Pear (lambda (a b) (cons a b)))
+
+(nat-Pear 1 5)
+
+(claim elim-Nat-Pear (-> (-> Nat Nat Nat) (Pair Nat Nat) Nat))
+(define elim-Nat-Pear (lambda (f p) (f (car p) (cdr p))))
+
+(claim kar-Nat-Pear (-> (Pair Nat Nat) Nat))
+(define kar-Nat-Pear (lambda (p) (elim-Nat-Pear (lambda (a b) a) p)))
+
+(claim kdr-Nat-Pear (-> (Pair Nat Nat) Nat))
+(define kdr-Nat-Pear (lambda (p) (elim-Nat-Pear (lambda (a b) b) p)))
+
+(kar-Nat-Pear (cons 3 77))
+(kdr-Nat-Pear (cons 3 77))
+
+(claim pear (Pi ((A U) (B U)) (-> A B (Pair A B)) ))
+(define pear (lambda (A B) (lambda (a b) (cons a b))))
+
+(pear Atom Atom 'hello 'world)
+
+(claim simple-swap (Pi ((A U) (B U)) (-> (Pair A B) (Pair B A))))
+(define simple-swap (lambda (A B) (lambda (p) (cons (cdr p) (car p)))))
+
+(simple-swap Nat Atom (cons 30 'hello))
+
+
+(claim elim-Pear (Pi ((A U) (B U) (X U)) (-> (-> A B X) (Pair A B) X)))
+(define elim-Pear (lambda (A B C f p) (f (car p) (cdr p))))
+
+(claim kar-Pear (Pi ((A U) (B U)) (-> (Pair A B) A)))
+(define kar-Pear (lambda (A B p) (elim-Pear A B A (lambda (a b) a) p)))
+
+(claim kdr-Pear (Pi ((A U) (B U)) (-> (Pair A B) B)))
+(define kdr-Pear (lambda (A B p) (elim-Pear A B B (lambda (a b) b) p)))
+
+(kar-Pear Nat Atom (cons 42 'life))
+(kdr-Pear Nat Atom (cons 42 'life))
