@@ -39,3 +39,8 @@
 
 (kar-Pear Nat Atom (cons 42 'life))
 (kdr-Pear Nat Atom (cons 42 'life))
+
+(claim better-swap (Pi ((A U) (B U)) (-> (Pair A B) (Pair B A))))
+(define better-swap (lambda (A B) (lambda (p) (elim-Pear A B (Pair B A) (lambda (a b) (cons b a)) p))))
+
+(better-swap Nat Atom (cons 55 'entangled))
