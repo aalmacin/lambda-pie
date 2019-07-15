@@ -1,0 +1,19 @@
+#lang pie
+
+
+(claim len (Pi ((E U)) (-> (List E) Nat)))
+(define len (lambda (E) (lambda (l) (rec-List l 0
+                                      (lambda (e l a) (add1 a)))
+                                      )))
+
+(len Atom (:: 'tomato (:: 'salad nil)))
+
+(claim + (-> Nat Nat Nat))
+(define + (lambda (a b) (iter-Nat a b (lambda (v) (add1 v)) )))
+
+(+ 5 44)
+
+(claim sum (-> (List Nat) Nat))
+(define sum (lambda (l) (rec-List l 0 (lambda (e l a) (+ a e)))))
+
+(sum (:: 1 (:: 2 (:: 3 (:: 4 (:: 5 nil))))))
