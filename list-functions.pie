@@ -17,3 +17,20 @@
 (define sum (lambda (l) (rec-List l 0 (lambda (e l a) (+ a e)))))
 
 (sum (:: 1 (:: 2 (:: 3 (:: 4 (:: 5 nil))))))
+
+
+(claim prepend (Pi ((E U)) (-> (List E) E (List E))))
+(define prepend (lambda (E) (lambda (l e) (:: e l))))
+
+(prepend Nat (:: 4 (:: 3 nil)) 7)
+
+(claim append (Pi ((E U)) (-> (List E) E (List E))))
+(define append (lambda (E) (lambda (l e) (rec-List l (:: e nil) (lambda (v c a) (:: v a) )))))
+
+(append Nat (:: 4 (:: 3 nil)) 7)
+
+(claim concat (Pi ((E U)) (-> (List E) (List E) (List E))))
+(define concat (lambda (E) (lambda (s e) (rec-List s e (lambda (v l a) (:: v a)
+                                           )))))
+
+(concat Atom (:: 'hello (:: 'world (:: 'how nil))) (:: 'are (:: 'you (:: 'today nil))))
