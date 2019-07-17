@@ -34,3 +34,8 @@
                                            )))))
 
 (concat Atom (:: 'hello (:: 'world (:: 'how nil))) (:: 'are (:: 'you (:: 'today nil))))
+
+(claim reverse(Pi ((E U)) (-> (List E) (List E))))
+(define reverse (lambda (E) (lambda (e) (rec-List e (the (List E) nil) (lambda (v c a) (append E a v))))))
+
+(reverse Atom (:: 'road (:: 'winding (:: 'and (:: 'long (:: 'the nil))))))
