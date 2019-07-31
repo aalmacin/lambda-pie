@@ -1,0 +1,18 @@
+#lang pie
+
+(claim motive (-> Nat U))
+(define motive (lambda (n) (Vec Atom n)))
+
+(claim step (Pi ((k Nat)) (-> (motive k) (motive (add1 k)))))
+(define step (lambda (k) (lambda (acc) (vec:: 'pea acc))))
+
+(claim peas (Pi ((n Nat)) (Vec Atom n)))
+(define peas (lambda (n) (ind-Nat
+                   n
+                   motive
+                   vecnil
+                   step)))
+
+
+(peas 3)
+(peas 5)
