@@ -1,0 +1,3 @@
+#lang pie
+
+(claim limit-peas (Pi ((min Nat) (max Nat) (n Nat)) (-> n (Vec Atom n))))

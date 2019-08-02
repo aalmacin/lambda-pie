@@ -1,0 +1,13 @@
+#lang pie
+
+(claim also-rec-Nat (-> Nat Nat (-> Nat Nat Nat) Nat))
+(define also-rec-Nat (lambda (t b s) (ind-Nat t
+                                       (lambda (k) Nat)
+                                       b
+                                       s
+                                       )))
+
+(claim + (-> Nat Nat Nat))
+(define + (lambda (a b) (also-rec-Nat a b (lambda (curr acc) (add1 acc)))))
+
+(+ 22 11)

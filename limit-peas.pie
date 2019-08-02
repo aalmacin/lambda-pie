@@ -1,0 +1,9 @@
+#lang pie
+
+(claim limit (Pi ((min Nat) (max Nat)) (-> Nat U)))
+(define limit (lambda (min max) (lambda (n) (Vec Atom n))))
+
+(claim limit-peas (Pi ((min Nat) (max Nat) (n Nat)) (-> Nat (limit n))))
+(define limit-peas (lambda (min max n) (lambda (a) (limit min max a))))
+
+(limit-peas 4 10 5)

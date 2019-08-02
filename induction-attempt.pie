@@ -1,0 +1,9 @@
+#lang pie
+
+(claim peas (Pi ((k Nat)) (-> Nat (Vec Atom k))))
+
+(define peas (lambda (k) (lambda (a) (ind-Nat 2
+                                       (lambda (j) (Vec Atom (add1 j)))
+                                       vecnil
+                                       (lambda (acc curr) (vec:: curr acc))
+                                      ))))
